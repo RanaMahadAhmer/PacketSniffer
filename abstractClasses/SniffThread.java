@@ -1,67 +1,12 @@
-package PacketSniffer.abstractClasses;
-/**This is a simple swing worker thread class which is available on the official oracle website*/
+package abstractClasses;
 import javax.swing.*;
-// Talhas Commit!!
 public abstract class SniffThread {
 
+    private final ThreadVar threadVar;
     private Object value;
-
     private Thread thread;
-    private ThreadVar threadVar;
 
-    public abstract Object construct();
-
-    private static class ThreadVar {
-
-        private Thread thread;
-
-        ThreadVar(Thread t) {
-            thread = t;
-        }
-
-        synchronized Thread get() {
-            return thread;
-        }
-
-        synchronized void clear() {
-            thread = null;
-        }
-    }
-
-    protected synchronized Object getValue() {
-        return value;
-    }
-
-    private synchronized void setValue(Object x) {
-        value = x;
-    }
-
-    public void finished() {
-    }
-
-    public void interrupt() {
-        Thread t = threadVar.get();
-        if (t != null) {
-            t.interrupt();
-        }
-        threadVar.clear();
-    }
-
-    public Object get() {
-        while (true) {
-            Thread t = threadVar.get();
-            if (t == null) {
-                return getValue();
-            }
-            try {
-                t.join();
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                return null;
-            }
-        }
-    }
-
+    
     public SniffThread() {
         final Runnable doFinished = new Runnable() {
             public void run() {
@@ -83,10 +28,75 @@ public abstract class SniffThread {
         threadVar = new ThreadVar(t);
     }
 
+    
+    public abstract Object construct();
+
+    
+    protected synchronized Object getValue() {
+        return value;
+    }
+
+  
+    private synchronized void setValue(Object x) {
+        value = x;
+    }
+
+    
+    public void finished() {
+        // Default implementation does nothing.
+    }
+
+    
+    public void interrupt() {
+        Thread t = threadVar.get();
+        if (t != null) {
+            t.interrupt();
+        }
+        threadVar.clear();
+    }
+
+    
+    public Object get() {
+        while (true) {
+            Thread t = threadVar.get();
+            if (t == null) {
+                return getValue();
+            }
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return null;
+            }
+        }
+    }
+
+   
     public void start() {
         Thread t = threadVar.get();
         if (t != null) {
             t.start();
+        }
+    }
+
+    
+    private static class ThreadVar {
+
+        private Thread thread;
+
+        
+        ThreadVar(Thread t) {
+            thread = t;
+        }
+
+        
+        synchronized Thread get() {
+            return thread;
+        }
+
+        
+        synchronized void clear() {
+            thread = null;
         }
     }
 }
