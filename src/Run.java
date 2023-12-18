@@ -14,7 +14,6 @@ public class Run {
 
         gui.BuildGUIComponents();
         
-
         JComponent[] toolBarComponents = gui.getGuiBarComponents();
         gui.addComponentsToToolBar(toolBarComponents);
 
