@@ -1,6 +1,6 @@
-package PacketSniffer.unRunAble.InterFaces;
+package unRunAble.InterFaces;
 
-import PacketSniffer.unRunAble.BackEnd;
+import unRunAble.BackEnd;
 
 import javax.swing.*;
 

@@ -1,4 +1,4 @@
-package PacketSniffer.graphicalModified;
+package graphicalModified;
 
 import javax.swing.*;
 import java.util.Arrays;

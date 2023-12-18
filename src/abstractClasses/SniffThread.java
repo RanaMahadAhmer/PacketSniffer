@@ -1,4 +1,4 @@
-package PacketSniffer.abstractClasses;
+package abstractClasses;
 /**This is a simple swing worker thread class which is available on the official oracle website*/
 import javax.swing.*;
 

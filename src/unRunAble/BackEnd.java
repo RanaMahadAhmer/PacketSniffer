@@ -1,4 +1,4 @@
-package PacketSniffer.unRunAble;
+package unRunAble;
 
 /**-----------------------------------------------------------------------------------------------------------*/
 /**The above line defines the block of code which will present a method  (a class if possible) In the final GUI Project*/
@@ -7,8 +7,8 @@ package PacketSniffer.unRunAble;
 
 /**Importing all import classes in the statics methods(static methods are in the JpcapCaptor class)*/
 
-import PacketSniffer.unRunAble.InterFaces.BackEndInterface;
-import PacketSniffer.abstractClasses.SniffThread;
+import unRunAble.InterFaces.BackEndInterface;
+import abstractClasses.SniffThread;
 import jpcap.JpcapCaptor;
 import jpcap.NetworkInterface;
 import jpcap.NetworkInterfaceAddress;

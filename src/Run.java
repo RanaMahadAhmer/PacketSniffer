@@ -1,9 +1,9 @@
-package PacketSniffer;
 
-import PacketSniffer.unRunAble.BackEnd;
-import PacketSniffer.unRunAble.Graphical;
-import PacketSniffer.unRunAble.InterFaces.BackEndInterface;
-import PacketSniffer.unRunAble.InterFaces.GraphicalInterface;
+
+import unRunAble.BackEnd;
+import unRunAble.Graphical;
+import unRunAble.InterFaces.BackEndInterface;
+import unRunAble.InterFaces.GraphicalInterface;
 
 import javax.swing.*;
 
