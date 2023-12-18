@@ -1,8 +1,5 @@
 package abstractClasses;
 import javax.swing.*;
-
-
-
 public abstract class SniffThread {
 
     private final ThreadVar threadVar;
