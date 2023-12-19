@@ -1,55 +1,58 @@
-package PacketSniffer.src.unRunAble;
+package unRunAble;
 
 
-import jpcap.PacketReceiver;
 import jpcap.packet.ICMPPacket;
 import jpcap.packet.Packet;
 import jpcap.packet.TCPPacket;
 import jpcap.packet.UDPPacket;
 
-import javax.swing.table.DefaultTableModel;
+
 import java.util.ArrayList;
 import java.util.List;
-public class PacketContents implements PacketReceiver {
 
-    public static TCPPacket tcp;
-    public static UDPPacket udp;
-    public static ICMPPacket icmp;
+
+/**
+ * This class represents the contents of packets and provides methods to receive and process packet information.
+ */
+public class PacketContents {
+
+    /**
+     * List to store packet information as arrays.
+     */
     public static List<Object[]> rowList = new ArrayList<Object[]>();
-    private int packetNo=0;
-    private Graphical gui;
 
-    public void setGui(Graphical gui){
-        this.gui = gui;
-    }
+    /**
+     * Counter to track the packet number.
+     */
+    private int packetNo = 0;
 
-    @Override
-    public void receivePacket(Packet packet) {
 
-        if (packet instanceof TCPPacket) {
-            tcp = (TCPPacket) packet;
+    /**
+     * Receives a packet, if of type udp tcp or icmp, processes its information, and adds it to the row list .
+     *
+     * @param packet The packet to be processed.
+     * @return An array representing packet information, or an empty array if the packet type is not supported.
+     */
+    public Object[] receivePacket(Packet packet) {
+        if (packet instanceof TCPPacket tcp) {
             Object[] row = {packetNo, tcp.length, tcp.src_ip, tcp.dst_ip, "TCP"};
             rowList.add(new Object[]{packetNo, tcp.length, tcp.src_ip, tcp.dst_ip, "TCP", tcp.src_port, tcp.dst_port,
-                tcp.ack, tcp.ack_num, tcp.data, tcp.sequence, tcp.offset, tcp.header});
-            DefaultTableModel model = (DefaultTableModel) gui.packetTable.getModel();
-            model.addRow(row);
+                    tcp.ack, tcp.ack_num, tcp.data, tcp.sequence, tcp.offset, tcp.header});
             packetNo++;
-        } else if (packet instanceof UDPPacket) {
-            udp = (UDPPacket) packet;
+            return row;
+        } else if (packet instanceof UDPPacket udp) {
             Object[] row = {packetNo, udp.length, udp.src_ip, udp.dst_ip, "UDP"};
             rowList.add(new Object[]{packetNo, udp.length, udp.src_ip, udp.dst_ip, "UDP", udp.src_port, udp.dst_port,
-                udp.data, udp.offset, udp.header});
-            DefaultTableModel model = (DefaultTableModel) gui.packetTable.getModel();
-            model.addRow(row);
+                    udp.data, udp.offset, udp.header});
             packetNo++;
-        } else if (packet instanceof ICMPPacket) {
-            icmp = (ICMPPacket) packet;
+            return row;
+        } else if (packet instanceof ICMPPacket icmp) {
             Object[] row = {packetNo, icmp.length, icmp.src_ip, icmp.dst_ip, "ICMP"};
             rowList.add(new Object[]{packetNo, icmp.length, icmp.src_ip, icmp.dst_ip, "ICMP", icmp.checksum, icmp.header,
-                icmp.offset, icmp.orig_timestamp, icmp.recv_timestamp, icmp.trans_timestamp, icmp.data});
-            DefaultTableModel model = (DefaultTableModel) gui.packetTable.getModel();
-            model.addRow(row);
+                    icmp.offset, icmp.orig_timestamp, icmp.recv_timestamp, icmp.trans_timestamp, icmp.data});
             packetNo++;
+            return row;
         }
+        return new Object[0];
     }
 }
