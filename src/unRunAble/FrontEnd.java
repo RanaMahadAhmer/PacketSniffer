@@ -14,7 +14,9 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
-
+/**
+ * Manages the graphical user interface (GUI) for a packet sniffer application.
+ */
 public class FrontEnd implements FrontEndTestInterface, FrontEndInterface, FrontEndToBackEndInterface {
     private final JToolBar bar = new JToolBar();
     private JTextArea textAreaPacketInfo;
@@ -37,12 +39,18 @@ public class FrontEnd implements FrontEndTestInterface, FrontEndInterface, Front
     private JLabel labelInterfaceInfo;
     private BackEnd backEnd;
 
-
+    /**
+     * Initializes a FrontEnd object with no associated BackEnd.
+     */
     public FrontEnd() {
         this.backEnd = null;
     }
 
-
+    /**
+     * Sets the BackEnd for the FrontEnd object.
+     *
+     * @param backEnd BackEnd object to associate with the FrontEnd.
+     */
     public void setBackEnd(BackEnd backEnd) {
         buildGUIComponents();
         this.backEnd = backEnd;
@@ -50,6 +58,10 @@ public class FrontEnd implements FrontEndTestInterface, FrontEndInterface, Front
     }
 
 
+    /**
+     * Constructs and initializes GUI components.
+     * Invoked by the constructor.
+     */
     private void buildGUIComponents() {
 
 
@@ -167,13 +179,19 @@ public class FrontEnd implements FrontEndTestInterface, FrontEndInterface, Front
         textAreaHexaScrollPane.setBounds(790, 525, 725, 250);
     }
 
-
+    /**
+     * Sets up the GUI components.
+     * Invoked after associating the BackEnd.
+     */
     private void setGuiComponents() {
         addComponentsToToolBar(getGuiBarComponents());
         addComponentsToScreen(getGuiScreenComponents());
     }
 
-
+    /**
+     * Handles the action when selecting a network interface.
+     * Disables/enables components based on the selected interface.
+     */
     private void interfaceOptionsActionPerformed() {
         if (interfaceOptions.getSelectedItem() != interfaceOptions.getItemAt(0)) {
             textAreaInterfaceInfo.setText(null);
@@ -186,7 +204,10 @@ public class FrontEnd implements FrontEndTestInterface, FrontEndInterface, Front
         }
     }
 
-
+    /**
+     * Starts the packet capture process.
+     * Disables/enables relevant buttons and components.
+     */
     public void startCapture() {
         captureButton.setEnabled(false);
         backEnd.startReadingPackets();
@@ -197,7 +218,10 @@ public class FrontEnd implements FrontEndTestInterface, FrontEndInterface, Front
         saveButton.setEnabled(false);
     }
 
-
+    /**
+     * Stops the packet capture process.
+     * Disables/enables relevant buttons and components.
+     */
     public void stopCapture() {
         captureState = false;
         interfaceOptions.setEnabled(true);
@@ -208,7 +232,10 @@ public class FrontEnd implements FrontEndTestInterface, FrontEndInterface, Front
         backEnd.thread.interrupt();
     }
 
-
+    /**
+     * Handles mouse click events on the packet table.
+     * Displays detailed packet information based on the selected row.
+     */
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
 
         Object obj = packetTable.getModel().getValueAt(packetTable.getSelectedRow(), 0);
@@ -279,17 +306,31 @@ public class FrontEnd implements FrontEndTestInterface, FrontEndInterface, Front
     }
 
 
+    /**
+     * Stops the packet capture process and saves captured packets.
+     */
     public void saveCapture() {
         backEnd.stopReadingPackets();
     }
 
-
+    /**
+     * Converts a string to its hexadecimal representation.
+     *
+     * @param text Input string to be converted.
+     * @return Hexadecimal representation of the input string.
+     * @throws UnsupportedEncodingException If the encoding is not supported.
+     */
     private String toHexadecimal(String text) throws UnsupportedEncodingException {
         byte[] myBytes = text.getBytes(StandardCharsets.UTF_8);
         return DatatypeConverter.printHexBinary(myBytes);
     }
 
-
+    /**
+     * Customizes the formatting of a hexadecimal string.
+     *
+     * @param text Hexadecimal string to be formatted.
+     * @return Formatted hexadecimal string.
+     */
     private String customizeHex(String text) {
         String out;
         out = text.replaceAll("(.{32})", "$1\n");
@@ -297,16 +338,29 @@ public class FrontEnd implements FrontEndTestInterface, FrontEndInterface, Front
     }
 
 
+    /**
+     * Retrieves an array of GUI components for the main screen.
+     *
+     * @return Array of GUI components including toolbar, packet table, labels, text areas, and scroll panes.
+     */
     private JComponent[] getGuiScreenComponents() {
         return new JComponent[]{bar, packetTableScrollPane, label, labelInterfaceInfo, textAreaInterfaceInfo, textAreaPacketInfo, label1, textAreaHexaScrollPane};
     }
 
-
+    /**
+     * Retrieves an array of GUI components for the toolbar.
+     *
+     * @return Array of GUI components including labels, combo boxes, and buttons.
+     */
     private JComponent[] getGuiBarComponents() {
         return new JComponent[]{labelForInterFace, interfaceOptions, labelForFilter, filterOptions, captureButton, stopButton, saveButton};
     }
 
-
+    /**
+     * Adds an array of components to the toolbar.
+     *
+     * @param comp Components to be added to the toolbar.
+     */
     private void addComponentsToToolBar(JComponent... comp) {
 
         for (JComponent jComponent : comp) {
@@ -314,7 +368,11 @@ public class FrontEnd implements FrontEndTestInterface, FrontEndInterface, Front
         }
     }
 
-
+    /**
+     * Adds an array of components to the main screen.
+     *
+     * @param comp Components to be added to the main screen.
+     */
     private void addComponentsToScreen(JComponent... comp) {
 
         for (JComponent jComponent : comp) {
@@ -322,82 +380,146 @@ public class FrontEnd implements FrontEndTestInterface, FrontEndInterface, Front
         }
     }
 
-
+    /**
+     * Gets the state of the capture button.
+     *
+     * @return True if the capture button is enabled, false otherwise.
+     */
     public boolean captureButtonState() {
         return captureButton.isEnabled();
     }
 
-
+    /**
+     * Gets the state of the stop button.
+     *
+     * @return True if the stop button is enabled, false otherwise.
+     */
     public boolean stopButtonState() {
         return stopButton.isEnabled();
     }
 
-
+    /**
+     * Gets the state of the save button.
+     *
+     * @return True if the save button is enabled, false otherwise.
+     */
     public boolean saveButtonState() {
         return saveButton.isEnabled();
     }
 
 
+    /**
+     * Gets the state of the interface options combo box.
+     *
+     * @return True if the interface options combo box is enabled, false otherwise.
+     */
     public boolean interfaceOptionsState() {
         return interfaceOptions.isEnabled();
     }
 
-
+    /**
+     * Gets the state of the filter options combo box.
+     *
+     * @return True if the filter options combo box is enabled, false otherwise.
+     */
     public boolean filterOptionsState() {
         return filterOptions.isEnabled();
     }
 
 
+    /**
+     * Gets the count of items in the interface options combo box.
+     *
+     * @return The count of items in the interface options combo box.
+     */
     public int getInterfaceListCount() {
         return interfaceOptions.getItemCount();
     }
 
-
+    /**
+     * Adds a new network interface name to the interface options combo box.
+     *
+     * @param name The name of the network interface to be added.
+     */
     public void addInterface(String name) {
         interfaceOptions.addItem(name);
     }
 
-
+    /**
+     * Sets the selected index of the interface options combo box.
+     *
+     * @param x The index to be set for the interface options combo box.
+     */
     public void setInterface(int x) {
         interfaceOptions.setSelectedIndex(x);
     }
 
-
+    /**
+     * Gets the name of the selected network interface from the interface options combo box.
+     *
+     * @return The name of the selected network interface.
+     */
     public String getSelectedInterface() {
         return Objects.requireNonNull(interfaceOptions.getSelectedItem()).toString();
     }
 
-
+    /**
+     * Gets the selected filter from the filter options combo box.
+     *
+     * @return The selected filter.
+     */
     public String getSelectedFilter() {
         return Objects.requireNonNull(filterOptions.getSelectedItem()).toString();
     }
 
-
+    /**
+     * Appends additional information to the interface information text area.
+     *
+     * @param info The additional information to be appended.
+     */
     public void addInterfaceInfo(String info) {
         textAreaInterfaceInfo.append(info);
     }
 
-
+    /**
+     * Gets the information from the interface information text area.
+     *
+     * @return The information from the interface information text area.
+     */
     public String getInterfaceInfo() {
         return textAreaInterfaceInfo.getText();
     }
 
-
+    /**
+     * Gets the state of the packet capture process.
+     *
+     * @return True if packet capture is active, false otherwise.
+     */
     public boolean getCaptureState() {
         return captureState;
     }
 
-
+    /**
+     * Sets the state of the packet capture process.
+     *
+     * @param state The state to be set for the packet capture process.
+     */
     public void setCaptureState(boolean state) {
         captureState = state;
     }
 
-
+    /**
+     * Adds a packet's information to the packet table.
+     *
+     * @param packetInfo The information of the packet to be added.
+     */
     public void addPacketToTable(Object[] packetInfo) {
         ((javax.swing.table.DefaultTableModel) packetTable.getModel()).addRow(packetInfo);
     }
 
-
+    /**
+     * Sets the visibility of the main screen.
+     */
     public void setVisible() {
         screen.setVisible(true);
     }

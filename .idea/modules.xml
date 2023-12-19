@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PacketSniffer.iml" filepath="$PROJECT_DIR$/PacketSniffer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PacketSniffer1.iml" filepath="$PROJECT_DIR$/PacketSniffer1.iml" />
     </modules>
   </component>
 </project>
