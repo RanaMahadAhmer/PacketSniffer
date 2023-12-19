@@ -14,6 +14,60 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The PacketContents.java has 1 method recievePacket that takes a packet and returns an array of objects.
+ * The return depends on the type of packet. The return result of the receivePacket method is displayed in the table.
+ * While additional information about each packet is stored in the rowList. From which it is retrieved when user clicks on
+ * a row in the table.
+ *
+ *
+ * The testing strategy used in the test cases:
+ *
+ *  Test Case: testReceiveMultiplePackets
+ * Creates instances of TCP, UDP, and ICMP packets.
+ * Calls receivePacket for each packet.
+ * Checks if the contents of PacketContents.rowList match the expected values.
+ *
+ *  Test Case: testReceiveUDPPacketWithSpecificValues
+ * Creates a UDP packet with specific source and destination ports.
+ * Calls receivePacket.
+ * Checks if the contents of PacketContents.rowList match the expected values.
+ *
+ *  Test Case: testReceiveUDPPacketWithNullValues
+ * Creates a UDP packet with source and destination ports set to 0.
+ * Calls receivePacket.
+ * Checks if the contents of PacketContents.rowList match the expected values.
+ *
+ *  Test Case: testReceiveValuedTCPPacketTable
+ * Creates a TCP packet with specific values.
+ * Calls receivePacket.
+ * Checks if the contents of PacketContents.rowList match the expected values.
+ *
+ *  Test Case: testReceiveValuedTCPPacketTextArea
+ * Creates a TCP packet with specific values.
+ * Calls receivePacket.
+ * Checks if the contents of PacketContents.rowList match the expected values.
+ *
+ *  Test Case: testReceiveNullTCPPacketTable
+ * Creates a TCP packet with null values.
+ * Calls receivePacket.
+ * Checks if the contents of PacketContents.rowList match the expected values.
+ *
+ *  Test Case: testReceiveNullTCPPacketTextArea
+ * Creates a TCP packet with null values.
+ * Calls receivePacket.
+ * Checks if the contents of PacketContents.rowList match the expected values.
+ *
+ * Test Case: testReceiveICMPPacketTable
+ * Creates an ICMP packet.
+ * Calls receivePacket.
+ * Checks if the contents of PacketContents.rowList match the expected values.
+ *
+ * Test Case: testReceiveICMPPacketTextArea
+ * Creates an ICMP packet.
+ * Calls receivePacket.
+ * Checks if the contents of PacketContents.rowList match the expected values.
+ * */
 class PacketContentsTest {
     PacketContents packetContents;
 
