@@ -7,6 +7,32 @@ import unRunAble.InterFaces.FrontEndTestInterface;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Testing Strategy:
+ * <p>
+ * The testing strategy for the FrontEnd class involves testing various states and behaviors related to the user interface
+ * and interaction with the BackEnd. The class implements FrontEndTestInterface, which defines the interactions with the
+ * BackEnd. The tests cover the following scenarios:
+ * <p>
+ * 1. Interface Options:
+ * - Testing the addition of interfaces, setting the current interface, and checking the state of interface options.
+ * - Verifying that interface information is added and components are updated appropriately.
+ * <p>
+ * 2. Filter Options:
+ * - Testing the state of filter options when selecting an interface.
+ * <p>
+ * 3. Capture Button:
+ * - Testing the state of interface options and filter options when starting packet capture.
+ * <p>
+ * 4. Stop Button:
+ * - Testing the state of interface options, filter options, and capture state when stopping packet capture.
+ * <p>
+ * 5. Save Button:
+ * - Testing the state of interface options, filter options, capture button, and stop button when saving captured data.
+ * <p>
+ * The tests use a mock BackEnd object for testing, and various methods are invoked to simulate user interactions and check
+ * the expected states of components. Assertions are used to verify that the actual states match the expected states.
+ */
 
 class FrontEndTest {
     FrontEndTestInterface frontEnd;
