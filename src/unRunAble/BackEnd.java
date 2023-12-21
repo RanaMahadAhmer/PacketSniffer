@@ -31,7 +31,7 @@ public class BackEnd {
     private JpcapCaptor jpcapCaptor;
     private Packet packet;
     private Formatter fileWriter;
-
+    private final PacketContents packetReceive = new PacketContents();
 
     /**
      * Constructor for BackEnd class.
@@ -72,11 +72,11 @@ public class BackEnd {
                     jpcapCaptor = JpcapCaptor.openDevice(networkInterfacesList[selectedInterFace], 65535, false, 20);
                     String selectedFilter = frontEnd.getSelectedFilter();
                     classifyPacketType(jpcapCaptor, selectedFilter);
-                    PacketContents packerReceive = new PacketContents();
+
                     while (frontEnd.getCaptureState()) {
                         packet = jpcapCaptor.getPacket();
                         if (!Objects.isNull(packet)) {
-                            Object[] packetRow = packerReceive.receivePacket(packet);
+                            Object[] packetRow = packetReceive.receivePacket(packet);
                             if (packetRow.length > 1) {
                                 frontEnd.addPacketToTable(packetRow);
                                 packetList.add(packet);

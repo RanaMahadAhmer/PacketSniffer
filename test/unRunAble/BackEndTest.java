@@ -60,9 +60,9 @@ class BackEndTest {
 
 //        // Check if the thread is started
         assertNotNull(backend.thread);
-        assertTrue(mockGui.getCaptureState());
     }
 
+    @Test
     void testStartReadingPacketsCaptureState() {
         mockGui.setBackEnd(backend);
         backend.start();
