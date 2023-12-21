@@ -61,7 +61,6 @@ class FrontEndTest {
 
         // Check if interface info is added and components are updated
         assertNotNull(frontEnd.getInterfaceInfo());
-
     }
 
     @Test
