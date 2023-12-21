@@ -14,22 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * and interaction with the BackEnd. The class implements FrontEndTestInterface, which defines the interactions with the
  * BackEnd. The tests cover the following scenarios:
  * <p>
- * 1. Interface Options:
- * - Testing the addition of interfaces, setting the current interface, and checking the state of interface options.
- * - Verifying that interface information is added and components are updated appropriately.
- * <p>
- * 2. Filter Options:
- * - Testing the state of filter options when selecting an interface.
- * <p>
- * 3. Capture Button:
- * - Testing the state of interface options and filter options when starting packet capture.
- * <p>
- * 4. Stop Button:
- * - Testing the state of interface options, filter options, and capture state when stopping packet capture.
- * <p>
- * 5. Save Button:
- * - Testing the state of interface options, filter options, capture button, and stop button when saving captured data.
- * <p>
  * The tests use a mock BackEnd object for testing, and various methods are invoked to simulate user interactions and check
  * the expected states of components. Assertions are used to verify that the actual states match the expected states.
  */
@@ -47,6 +31,11 @@ class FrontEndTest {
         frontEnd = null;
     }
 
+    /**
+     * Interface Options:
+     *  Testing the addition of interfaces, setting the current interface, and checking the state of interface options.
+     *  Verifying that interface information is added and components are updated appropriately.
+     * */
     @Test
     void testInterfaceOptionsInterfaceInfo() {
         // Create a mock BackEnd object for testing
@@ -79,6 +68,10 @@ class FrontEndTest {
         assertFalse(frontEnd.interfaceOptionsState());
     }
 
+    /**
+     * Filter Options:
+     * Testing the state of filter options when selecting an interface.
+     *  */
     @Test
     void testInterfaceOptionsFilterOptionState() {
         // Create a mock BackEnd object for testing
@@ -96,6 +89,10 @@ class FrontEndTest {
     }
 
 
+    /**
+     * Capture Button:
+     * Testing the state of interface options and filter options when starting packet capture.
+     *  */
     @Test
     void testCaptureButtonInterfaceOptionState() {
         // Create a mock BackEnd object for testing
@@ -126,6 +123,10 @@ class FrontEndTest {
     }
 
 
+    /**
+     * Stop Button:
+     * Testing the state of interface options, filter options, and capture state when stopping packet capture.
+     *  */
     @Test
     void testStopButtonCaptureSate() {
         BackEnd mockBackEnd = new BackEnd((FrontEnd) frontEnd);
@@ -176,6 +177,10 @@ class FrontEndTest {
     }
 
 
+    /**
+     * Save Button:
+     * Testing the state of interface options, filter options, capture button, and stop button when saving captured data.
+     * */
     @Test
     void testSaveButtonCaptureState() {
         BackEnd mockBackEnd = new BackEnd((FrontEnd) frontEnd);

@@ -6,7 +6,15 @@ import org.junit.jupiter.api.Test;
 import unRunAble.InterFaces.FrontEndTestInterface;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Testing Strategy:
+ * <p>
+ * The testing strategy for the BackEnd class involves testing various aspects of its interaction with the FrontEnd,
+ * including the initialization of GUI components, thread handling, and packet reading functionality.
+ * <p>
+ * The tests use a mock FrontEnd object for testing, and various methods are invoked to simulate interactions with the
+ * GUI and check the expected states. Assertions are used to verify that the actual states match the expected states.
+ */
 class BackEndTest {
 
     FrontEndTestInterface mockGui;
@@ -25,7 +33,10 @@ class BackEndTest {
         backend = null;
     }
 
-
+    /**
+     * Start Adding Info to GUI Interface List:
+     *  Testing if the networkInterfacesList is initialized and the GUI is updated with interface information.
+     *  */
     @Test
     void testStartAddingInfoToGuiInterfaceList() {
 
@@ -37,6 +48,10 @@ class BackEndTest {
 
     }
 
+    /**
+     * Start Adding Info to GUI Interface List Count:
+     * Testing if the networkInterfacesList is initialized, and the count of interfaces in the GUI is greater than zero.
+     * */
     @Test
     void testStartAddingInfoToGuiInterfaceListCount() {
 
@@ -47,6 +62,11 @@ class BackEndTest {
 
     }
 
+    /**
+     * Start Reading Packets Thread:
+     * Testing the initialization of the packet reading thread when starting packet capture.
+     * Checking if the thread is started and the capture state is set to true.
+     * */
     @Test
     void testStartReadingPacketsThread() {
         mockGui.setBackEnd(backend);
@@ -62,6 +82,10 @@ class BackEndTest {
         assertNotNull(backend.thread);
     }
 
+    /**
+     * Start Reading Packets Capture State:
+     * Checking if the capture state is set to true after starting packet capture.
+     */
     @Test
     void testStartReadingPacketsCaptureState() {
         mockGui.setBackEnd(backend);
@@ -77,6 +101,10 @@ class BackEndTest {
         assertTrue(mockGui.getCaptureState());
     }
 
+    /**
+     * Add Interface Info:
+     * Simulating the addition of interface information and checking if it is appended to the text area in the GUI.
+     * */
     @Test
     void testAddInterfaceInfo() {
 
@@ -92,6 +120,10 @@ class BackEndTest {
         assertNotNull(mockGui.getInterfaceInfo());
     }
 
+    /**
+     * Stop Reading Packets:
+     * Simulating the start and stop of packet reading and checking if the capture state is set to false.
+     * */
     @Test
     void testStopReadingPackets() {
 

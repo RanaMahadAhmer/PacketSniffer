@@ -19,54 +19,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * The return depends on the type of packet. The return result of the receivePacket method is displayed in the table.
  * While additional information about each packet is stored in the rowList. From which it is retrieved when user clicks on
  * a row in the table.
- *
- *
- * The testing strategy used in the test cases:
- *
- *  Test Case: testReceiveMultiplePackets
- * Creates instances of TCP, UDP, and ICMP packets.
- * Calls receivePacket for each packet.
- * Checks if the contents of PacketContents.rowList match the expected values.
- *
- *  Test Case: testReceiveUDPPacketWithSpecificValues
- * Creates a UDP packet with specific source and destination ports.
- * Calls receivePacket.
- * Checks if the contents of PacketContents.rowList match the expected values.
- *
- *  Test Case: testReceiveUDPPacketWithNullValues
- * Creates a UDP packet with source and destination ports set to 0.
- * Calls receivePacket.
- * Checks if the contents of PacketContents.rowList match the expected values.
- *
- *  Test Case: testReceiveValuedTCPPacketTable
- * Creates a TCP packet with specific values.
- * Calls receivePacket.
- * Checks if the contents of PacketContents.rowList match the expected values.
- *
- *  Test Case: testReceiveValuedTCPPacketTextArea
- * Creates a TCP packet with specific values.
- * Calls receivePacket.
- * Checks if the contents of PacketContents.rowList match the expected values.
- *
- *  Test Case: testReceiveNullTCPPacketTable
- * Creates a TCP packet with null values.
- * Calls receivePacket.
- * Checks if the contents of PacketContents.rowList match the expected values.
- *
- *  Test Case: testReceiveNullTCPPacketTextArea
- * Creates a TCP packet with null values.
- * Calls receivePacket.
- * Checks if the contents of PacketContents.rowList match the expected values.
- *
- * Test Case: testReceiveICMPPacketTable
- * Creates an ICMP packet.
- * Calls receivePacket.
- * Checks if the contents of PacketContents.rowList match the expected values.
- *
- * Test Case: testReceiveICMPPacketTextArea
- * Creates an ICMP packet.
- * Calls receivePacket.
- * Checks if the contents of PacketContents.rowList match the expected values.
  * */
 class PacketContentsTest {
     PacketContents packetContents;
@@ -82,6 +34,13 @@ class PacketContentsTest {
         packetContents = null;
     }
 
+
+    /**
+     * Test Case: testReceiveMultiplePackets
+     *  Creates instances of TCP, UDP, and ICMP packets.
+     *  Calls receivePacket for each packet.
+     *  Checks if the contents of PacketContents.rowList match the expected values.
+     * */
 
     @Test
     void testReceiveMultiplePackets() {
@@ -123,6 +82,12 @@ class PacketContentsTest {
 
     }
 
+    /**
+     * Test Case: testReceiveUDPPacketWithSpecificValues
+     *  Creates a UDP packet with specific source and destination ports.
+     *  Calls receivePacket.
+     *  Checks if the contents of PacketContents.rowList match the expected values.
+     * */
     @Test
     void testReceiveUDPPacketWithSpecificValues() {
         // Create a UDPPacket with specific source and destination ports
@@ -144,6 +109,12 @@ class PacketContentsTest {
 
     }
 
+    /**
+     * Test Case: testReceiveUDPPacketWithNullValues
+     *  Creates a UDP packet with source and destination ports set to 0.
+     *  Calls receivePacket.
+     *  Checks if the contents of PacketContents.rowList match the expected values.
+     * */
     @Test
     void testReceiveUDPPacketWithNullValues() {
         // Create a UDPPacket with source and destination ports set to 0
@@ -165,6 +136,12 @@ class PacketContentsTest {
 
     }
 
+    /**
+     * Test Case: testReceiveValuedTCPPacketTable
+     *  Creates a TCP packet with specific values.
+     *  Calls receivePacket.
+     *  Checks if the contents of PacketContents.rowList match the expected values.
+     * */
     @Test
     void testReceiveValuedTCPPacketTable() {
         // Create a TCPPacket with specific values
@@ -186,6 +163,12 @@ class PacketContentsTest {
         }
     }
 
+    /**
+     * Test Case: testReceiveValuedTCPPacketTextArea
+     *  Creates a TCP packet with specific values.
+     *  Calls receivePacket.
+     *  Checks if the contents of PacketContents.rowList match the expected values.
+     *  */
     @Test
     void testReceiveValuedTCPPacketTextArea() {
         // Create a TCPPacket with specific values
@@ -206,6 +189,12 @@ class PacketContentsTest {
         }
     }
 
+    /**
+     * Test Case: testReceiveNullTCPPacketTable
+     *  Creates a TCP packet with null values.
+     *  Calls receivePacket.
+     *  Checks if the contents of PacketContents.rowList match the expected values.
+     * */
     @Test
     void testReceiveNullTCPPacketTable() {
 
@@ -225,6 +214,12 @@ class PacketContentsTest {
         }
     }
 
+    /**
+     * Test Case: testReceiveNullTCPPacketTextArea
+     *  Creates a TCP packet with null values.
+     *  Calls receivePacket.
+     *  Checks if the contents of PacketContents.rowList match the expected values.
+     * */
     @Test
     void testReceiveNullTCPPacketTextArea() {
 
@@ -246,6 +241,12 @@ class PacketContentsTest {
         }
     }
 
+    /**
+     * Test Case: testReceiveICMPPacketTable
+     *  Creates an ICMP packet.
+     *  Calls receivePacket.
+     *  Checks if the contents of PacketContents.rowList match the expected values.
+     * */
     @Test
     void testReceiveICMPPacketTable() {
         ICMPPacket icmpPacket = new ICMPPacket();
@@ -264,6 +265,12 @@ class PacketContentsTest {
         }
     }
 
+    /**
+     * Test Case: testReceiveICMPPacketTextArea
+     *  Creates an ICMP packet.
+     *  Calls receivePacket.
+     *  Checks if the contents of PacketContents.rowList match the expected values.
+     * */
     @Test
     void testReceiveICMPPacketTextArea() {
         ICMPPacket icmpPacket = new ICMPPacket();
