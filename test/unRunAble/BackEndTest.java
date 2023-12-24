@@ -7,6 +7,35 @@ import unRunAble.InterFaces.FrontEndTestInterface;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Testing Strategy:
+ * <p>
+ * The testing strategy for the BackEnd class involves testing various aspects of its interaction with the FrontEnd,
+ * including the initialization of GUI components, thread handling, and packet reading functionality. The tests cover the
+ * following scenarios:
+ * <p>
+ * 1. Start Adding Info to GUI Interface List:
+ * - Testing if the networkInterfacesList is initialized and the GUI is updated with interface information.
+ * <p>
+ * 2. Start Adding Info to GUI Interface List Count:
+ * - Testing if the networkInterfacesList is initialized, and the count of interfaces in the GUI is greater than zero.
+ * <p>
+ * 3. Start Reading Packets Thread:
+ * - Testing the initialization of the packet reading thread when starting packet capture.
+ * - Checking if the thread is started and the capture state is set to true.
+ * <p>
+ * 4. Start Reading Packets Capture State:
+ * - Checking if the capture state is set to true after starting packet capture.
+ * <p>
+ * 5. Add Interface Info:
+ * - Simulating the addition of interface information and checking if it is appended to the text area in the GUI.
+ * <p>
+ * 6. Stop Reading Packets:
+ * - Simulating the start and stop of packet reading and checking if the capture state is set to false.
+ * <p>
+ * The tests use a mock FrontEnd object for testing, and various methods are invoked to simulate interactions with the
+ * GUI and check the expected states. Assertions are used to verify that the actual states match the expected states.
+ */
 class BackEndTest {
 
     FrontEndTestInterface mockGui;
