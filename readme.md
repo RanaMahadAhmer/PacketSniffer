@@ -1,5 +1,5 @@
 # Packet Sniffer
-A java project that uses swing for frontend.
+A java project that uses swing for frontend and Jpcap library to capture and monitor real time network traffic on multitude of hardware and virtual network interfaces.
 ## Capabilities
 1. We can capture live network traffic with JpCap library.
 2. The packet types that are implemented are TCP, UDP and ICMP.
